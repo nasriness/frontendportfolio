@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-gold-300: #FDE68A;
+  --color-gold-400: #FACC15;
+  --color-gold-500: #EAB308;
+  --color-dark-900: #050505;
+  --color-dark-800: #0a0a0a;
+  --color-dark-700: #121212;
+}
+
+@layer base {
+  body {
+    @apply bg-dark-900 text-white font-sans antialiased overflow-x-hidden selection:bg-gold-500/30 selection:text-gold-300;
+  }
+}
+
+.bg-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white/90 to-white/50;
+}
+
+.text-gradient-gold {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-300 via-yellow-200 to-amber-500;
+}
+
+.glass-panel {
+  @apply bg-white/[0.02] border border-white/[0.05] backdrop-blur-md rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+}
+
+.glass-panel-hover {
+  @apply transition-all duration-300 hover:bg-white/[0.04] hover:border-gold-500/20 hover:shadow-[0_8px_32px_0_rgba(234,179,8,0.1)];
+}
